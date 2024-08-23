@@ -10,7 +10,7 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var JWTSetting = builder.Configuration.GetSection("");
+var JWTSetting = builder.Configuration.GetSection("JWTSettings");
 
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext>(options=>options.UseSqlite("Data source=auth.db"));
