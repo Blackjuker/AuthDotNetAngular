@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\KRACHALO\\Desktop\\arnaud\\learn\\API\\API.csproj": {}
+    "C:\\Users\\KRACHALO\\Desktop\\arnaud\\learn\\api\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\KRACHALO\\Desktop\\arnaud\\learn\\API\\API.csproj": {
+    "C:\\Users\\KRACHALO\\Desktop\\arnaud\\learn\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\KRACHALO\\Desktop\\arnaud\\learn\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\KRACHALO\\Desktop\\arnaud\\learn\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\KRACHALO\\Desktop\\arnaud\\learn\\API\\API.csproj",
+        "projectPath": "C:\\Users\\KRACHALO\\Desktop\\arnaud\\learn\\api\\API.csproj",
         "packagesPath": "C:\\Users\\KRACHALO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\KRACHALO\\Desktop\\arnaud\\learn\\API\\obj\\",
+        "outputPath": "C:\\Users\\KRACHALO\\Desktop\\arnaud\\learn\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\KRACHALO\\AppData\\Roaming\\NuGet\\NuGet.Config",
