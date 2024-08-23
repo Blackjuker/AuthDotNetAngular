@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Dtos;
 using API.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -26,8 +27,32 @@ namespace API.Controllers
 
         //api/account/register
        [HttpPost("register")]
-        public async Task<ActionResult<string>> Register(){
-            
+        public async Task<ActionResult<string>> Register(RegisterDto registerDto)
+        {
+            if(!ModelState.IsValid){
+                return BadRequest(ModelState);
+            }
+
+            var user = new AppUser{
+                Email = registerDto.Email,
+                FullName = registerDto.FullName,
+                UserName = registerDto.Email
+            };
+
+            var result = await _userManager.CreateAsync(user,registerDto.Password);
+
+
+            if(!result.Succeeded){
+                return BadRequest(result.Errors);
+            }
+
+            if(registerDto.Roles == null){
+                await _userManager.AddToRoleAsync(user,"User");
+            }else{
+                foreach(var role in registerDto.Roles){
+                    await _userManager.AddToRoleAsync(user,role);
+                }
+            }
         }
     }
 }
