@@ -85,8 +85,32 @@ namespace API.Controllers
 
 
         [HttpPost("assign")]
-        public async Task<IActionResult> AssignRole([FromBody] RoleAssignDto roleAssignDto){
-            
+        public async Task<IActionResult> AssignRole([FromBody] RoleAssignDto roleAssignDto)
+        {
+            var user = await _userManager.FindByIdAsync(roleAssignDto.UserId);
+
+            if (user is null)
+            {
+                return NotFound("User not found.");
+            }
+
+            var role = await _roleManager.FindByIdAsync(roleAssignDto.RoleId);
+
+            if (role is null)
+            {
+                return NotFound("Role not found.");
+            }
+
+            var result =await _userManager.AddToRoleAsync(user,role.Name!);
+
+            if(result.Succeeded)
+            {
+                return Ok(new {message = "Role assigned successfully"});
+            }
+
+            var error = result.Errors.FirstOrDefault();
+
+            return BadRequest(error!.Description);
         }
     }
 }
