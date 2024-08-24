@@ -82,5 +82,11 @@ namespace API.Controllers
 
             return BadRequest("Role deletion failed.");
         }
+
+
+        [HttpPost("assign")]
+        public async Task<IActionResult> AssignRole([FromBody] RoleAssignDto roleAssignDto){
+            
+        }
     }
 }
