@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Dtos;
 using API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [ApiController]
     [Route("api/[Controller]")]
     public class RolesController:ControllerBase
