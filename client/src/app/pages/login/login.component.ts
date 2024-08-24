@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatIconModule } from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input'
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,13 +13,15 @@ import { RouterLink } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit{
-  
+  authService = inject(AuthService);
   hide = true;
   form !: FormGroup;
   fb = inject(FormBuilder);
 
   login(){
-
+    this.authService.login(this.form.value).subscribe((response)=>{
+      console.log(response);
+    })
   }
 
   ngOnInit(): void {
