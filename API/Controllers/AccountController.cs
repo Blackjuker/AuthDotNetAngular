@@ -109,7 +109,7 @@ namespace API.Controllers
         private string GenerateToken(AppUser user){
             var tokenHandler = new JwtSecurityTokenHandler();
 
-            var key = Encoding.ASCII.GetBytes(_configuration.GetSection("JWTSetting").GetSection("securityKey").Value!);
+            var key = Encoding.ASCII.GetBytes(_configuration.GetSection("JWTSettings").GetSection("securityKey").Value!);
 
             var roles = _userManager.GetRolesAsync(user).Result;
             
@@ -118,8 +118,8 @@ namespace API.Controllers
                 new (JwtRegisteredClaimNames.Email,user.Email ??""),
                 new (JwtRegisteredClaimNames.Name, user.FullName??""),
                 new (JwtRegisteredClaimNames.NameId,user.Id ??""),
-                new (JwtRegisteredClaimNames.Aud,_configuration.GetSection("JWTSetting").GetSection("validAudience").Value!),
-                new (JwtRegisteredClaimNames.Iss,_configuration.GetSection("JWTSetting").GetSection("validIssuer").Value!)
+                new (JwtRegisteredClaimNames.Aud,_configuration.GetSection("JWTSettings").GetSection("ValidAudience").Value!),
+                new (JwtRegisteredClaimNames.Iss,_configuration.GetSection("JWTSettings").GetSection("ValidIssuer").Value!)
             ];
             
 

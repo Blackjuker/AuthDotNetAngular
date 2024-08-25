@@ -14,7 +14,7 @@ export class AuthService {
   constructor(private http:HttpClient) { }
 
   login(data: LoginRequest):Observable<AuthResponse>{
-    return this.http.post<AuthResponse>(`${this.apiUrl}/account/login`,data).pipe(
+    return this.http.post<AuthResponse>(`${this.apiUrl}account/login`,data).pipe(
       map((response)=>{
         if(response.isSuccess){
           localStorage.setItem(this.tokenKey,response.token);
